@@ -63,9 +63,9 @@ draws1 = draws1[,1:dimensions]
 
 # Likelihood function
 LL <- function(params){  
-  Fbeta <- params[1:3] # Fixed parameters in the mean Function (excluding the constant)
-  MRbeta <- params[4:5]  # Mean of Random parameters in the mean function
-  SDRbeta <- params[6:7]  # Std of Random parameters in the mean function
+  Fbeta <- params[1:2] # Fixed parameters in the mean Function (excluding the constant)
+  MRbeta <- params[3:4]  # Mean of Random parameters in the mean function
+  SDRbeta <- params[5:6]  # Std of Random parameters in the mean function
   
   # vector of indipendent variables with fixed parameters
   offset = rep.int(dataF%*%as.matrix(Fbeta,ncol=1),Ndraws)
@@ -88,7 +88,7 @@ LL <- function(params){
 }
 
 # initial values for optimization
-init <- c(2,-5.5,0.66,#fixed parameters
+init <- c(2,-5.5,#fixed parameters
           0.17,-0.14,#mean of random parameters
           0.05,0.08)#standard deviation of random parameters
 
