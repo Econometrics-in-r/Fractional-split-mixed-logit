@@ -23,7 +23,7 @@ preparedraws=function()
   }
 }
 
-Ndraws=500      # set number of draws 
+Ndraws=200      # set number of draws 
 dimensions=2    # define number of random parameters in the model
 
 # generate draws (using Halton)
@@ -88,9 +88,9 @@ LL <- function(params){
 }
 
 # initial values for optimization
-init <- c(2,-5.5,#fixed parameters
-          0.17,-0.14,#mean of random parameters
-          0.05,0.08)#standard deviation of random parameters
+init <- c(0,0.1,#fixed parameters
+          0.1,0.1,#mean of random parameters
+          0.1,0.1)#standard deviation of random parameters
 
 # optimization (maximization of likelihood function)
 fit1 <- maxLik(LL,start=init,method="BFGS")
