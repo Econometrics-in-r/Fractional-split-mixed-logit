@@ -76,12 +76,10 @@ LL <- function(params){
   
   # probability of the chosen alternative
   prob1 <- exp(u)/(1+exp(u))
-  # probability of the non-chosen alternative
-  prob2 <- 1-prob1
   
   # simulated loglikelihood for fractional split model
   PR1 <- log(rowMeans(matrix(prob1, ncol = Ndraws)))
-  PR2 <- log(rowMeans(matrix(prob2, ncol = Ndraws)))
+  PR2 <- 1-PR1
   loglik <- sum(w1*PR1+w2*PR2)
   
   return(loglik)
