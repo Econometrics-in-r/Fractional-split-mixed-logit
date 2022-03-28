@@ -78,9 +78,9 @@ LL <- function(params){
   prob1 <- exp(u)/(1+exp(u))
   
   # simulated loglikelihood for fractional split model
-  PR1 <- log(rowMeans(matrix(prob1, ncol = Ndraws)))
+  PR1 <- rowMeans(matrix(prob1, ncol = Ndraws))
   PR2 <- 1-PR1
-  loglik <- sum(w1*PR1+w2*PR2)
+  loglik <- sum(w1*log(PR1)+w2*log(PR2))
   
   return(loglik)
 }
